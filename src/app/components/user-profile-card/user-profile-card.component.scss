@@ -1,0 +1,102 @@
+
+:host {
+  --width: 315px;
+  --height: 556px;
+  --padding: 75px 40px 60px;
+  --align-items: center;
+
+  --bg-block-size: 124px;
+  --bg-orientation: 180deg;
+  --bg-color-start: var(--pl-user-profile-card-bg-color-start, #012A42);
+  --bg-color-end: var(--pl-user-profile-card-bg-color-end, #ffffff);
+
+  --image-margin: 0;
+
+  --info-margin-top: 11px;
+
+  --group-direction: column;
+  --group-align-items: center;
+
+  --btns-direction: column;
+  --btns-gap: 10px;
+
+  --pl-user-profile-image-border-color: var(--bg-color-end);
+
+  container-type: inline-size;
+  container-name: card;
+  display: flex;
+  flex: 1;
+
+  .card__wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: var(--width);
+  }
+
+  .user-profile-card {
+    display: flex;
+    box-sizing: border-box;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: var(--align-items);
+    width: var(--width);
+    height: var(--height);
+    padding: var(--padding);
+    background: linear-gradient(var(--bg-orientation), var(--bg-color-start) var(--bg-block-size), var(--bg-color-end) var(--bg-block-size));
+    border-radius: 20px;
+
+    .group {
+      display: flex;
+      flex-direction: var(--group-direction);
+      align-items: var(--group-align-items);
+
+      .image {
+        margin: var(--image-margin);
+      }
+
+      .info {
+        max-width: 360px;
+        margin-top: var(--info-margin-top);
+      }
+    }
+
+    .btns {
+      display: flex;
+      flex-direction: var(--btns-direction);
+      gap: var(--btns-gap);
+      justify-content: var(--btns-justify-content);
+      width: var(--btns-width);
+    }
+  }
+
+  @container card (min-width: 815px) {
+    .card__wrapper {
+      --width: 815px;
+      --height: 359px;
+      --padding: 43px 18px 34px 169px;
+      --align-items: flex-start;
+      --bg-block-size: 259px;
+      --bg-orientation: 90deg;
+
+      --image-margin: 37px 33px 0 0;
+
+      --info-margin-top: 0;
+
+      --group-direction: row;
+      --group-align-items: flex-start;
+      --group-justify-content: flex-start;
+
+      --btns-direction: row;
+      --btns-gap: 60px;
+      --btns-width: 100%;
+      --btns-justify-content: flex-end;
+
+      --pl-user-profile-image-size: 180px;
+
+      --pl-user-info-header-size: 32px;
+      --pl-user-info-copy-size: 16px;
+      --pl-user-info-copy-line-height: 20.16px;
+    }
+  }
+}
