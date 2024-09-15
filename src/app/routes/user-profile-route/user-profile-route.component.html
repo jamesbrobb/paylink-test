@@ -1,0 +1,12 @@
+
+
+@if(user() === null) {
+  <div class="message">
+    <h1>Please add a userId to the url: e.g. /users;userId=1</h1>
+  </div>
+} @else {
+  <div class="card-container">
+    <pl-user-profile-card [data]="user()!"></pl-user-profile-card>
+  </div>
+}
+

@@ -1,0 +1,49 @@
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { UserProfileRouteComponent } from './user-profile-route.component';
+
+
+const user = {
+  "id": 1,
+  "name": "John Doe",
+  "socialMediaHandle": "@johndoe",
+  "profileImgSrc": "https://assets.embarknext.com/assets/d37c2ffb-dcc6-4513-8b13-3356b01d02d0",
+  "bio": "I'm a software engineer who loves to code and build things.",
+  "location": "Grantham, UK",
+  "website": "https://johndoe.com"
+}
+
+
+describe('UserProfileRouteComponent', () => {
+  let component: UserProfileRouteComponent;
+  let fixture: ComponentFixture<UserProfileRouteComponent>;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [UserProfileRouteComponent]
+    })
+    .compileComponents();
+
+    fixture = TestBed.createComponent(UserProfileRouteComponent);
+    component = fixture.componentInstance;
+    fixture.componentRef.setInput('userData', null);
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+
+  it('should display message when no data is received', () => {
+    const elem = fixture.debugElement.nativeElement;
+    expect(elem.querySelector('.message')).toBeTruthy();
+  });
+
+  it('should display user profile card when data is received', () => {
+    fixture.componentRef.setInput('userData', user);
+    fixture.detectChanges();
+
+    const elem = fixture.debugElement.nativeElement;
+    expect(elem.querySelector('.card-container')).toBeTruthy();
+  });
+});
