@@ -11,7 +11,7 @@ describe('NotFoundRouteComponent', () => {
       imports: [NotFoundRouteComponent]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(NotFoundRouteComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

@@ -1,0 +1,69 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+$_primary: mat.define-palette(mat.$blue-gray-palette, 500, 100, 900, 100);
+$_accent: mat.define-palette(mat.$amber-palette, 500, 100, 900, 100);
+$_warn: mat.define-palette(mat.$red-palette, 500, 100, 900, 100);
+
+$_typography: mat.define-typography-config();
+
+$light-theme: mat.define-light-theme((
+  color: (
+    primary: $_primary,
+    accent: $_accent,
+    warn: $_warn,
+  ),
+  typography: $_typography
+));
+
+
+$_dark-primary: mat.define-palette(mat.$purple-palette, 500, 100, 900);
+$_dark-accent: mat.define-palette(mat.$amber-palette, 500, 100, 900);
+$_dark-warn: mat.define-palette(mat.$red-palette, 500, 100, 900);
+
+$dark-theme: mat.define-dark-theme((
+  color: (
+    primary: $_dark-primary,
+    accent: $_dark-accent,
+    warn: $_dark-warn,
+  ),
+  typography: $_typography
+));
+
+
+@include mat.core();
+@include mat.core-theme($light-theme);
+@include mat.typography-hierarchy($_typography);
+@include mat.toolbar-theme($light-theme);
+@include mat.icon-theme($light-theme);
+
+:root {
+  [data-color-mode="dark"] {
+    @include mat.core-color($dark-theme);
+    @include mat.toolbar-color($dark-theme);
+    @include mat.icon-color($dark-theme);
+  }
+}
+
+
+@function get-palette-from-theme($theme, $palette-type) {
+  $color-config: mat.get-color-config($theme);
+  @return map.get($color-config, $palette-type);
+}
+
+@function get-mode-palettes-for($palette-type, $light-theme, $dark-theme: null) {
+
+  $light-palette: get-palette-from-theme($light-theme, $palette-type);
+  $dark-palette: null;
+
+  @if $dark-theme {
+    $dark-palette: get-palette-from-theme($dark-theme, $palette-type);
+  }
+
+  @return $light-palette, $dark-palette;
+}
+
+@function get-color-from-palette($palette, $type) {
+  @return map.get($palette, $type);
+}
+

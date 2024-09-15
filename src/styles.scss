@@ -1,1 +1,69 @@
-/* You can add global styles to this file, and also import other style files */
+@use 'sass:map';
+@import "theme";
+
+
+$primary-palettes: get-mode-palettes-for(primary, $light-theme, $dark-theme);
+
+$light-icon: get-color-from-palette(nth($primary-palettes, 1), default-contrast);
+$dark-icon: get-color-from-palette(nth($primary-palettes, 2), default-contrast);
+
+
+@mixin button_reset {
+  display: block;
+  font-family: unset;
+  font-size: unset;
+  font-weight: unset;
+  text-align: unset;
+  border: none;
+  cursor: pointer;
+  background: transparent;
+  outline: none;
+  padding: 0;
+  margin: 0;
+}
+
+.pl-btn {
+  @include button_reset;
+  width: 205px;
+  height: 40px;
+  padding: 8px 40px 8px 40px;
+  gap: 10px;
+  border-radius: 40px;
+  font-family: "Mulish", "Helvetica Neue", sans-serif;
+  color: #FFFFFF;
+  background-color: #673BFF;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  text-align: center;
+
+  &:hover {
+    background-color: #3D219B;
+  }
+}
+
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+html, body { height: 100vh; }
+
+body {
+  margin: 0;
+  background-color: #EDEDED;
+
+  --color-mode-btn-icon-color: #{$light-icon};
+
+  &[data-color-mode="dark"] {
+    background-color: #424242;
+
+    --color-mode-btn-icon-color: #{$dark-icon};
+    --pl-user-profile-card-bg-color-start: #671875;
+    --pl-user-profile-card-bg-color-end: #303030;
+    --pl-user-info-color: #FFFFFF;
+    --pl-text-color: #FFFFFF;
+  }
+}
