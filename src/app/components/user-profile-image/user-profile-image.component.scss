@@ -1,0 +1,17 @@
+:host {
+  --size: var(--pl-user-profile-image-size, 98px);
+  --border-color: var(--pl-user-profile-image-border-color, #ffffff);
+  display: block;
+  position: relative;
+  width: var(--size);
+  height: var(--size);
+  border: 1px solid var(--border-color);
+  border-radius: calc(50%);
+  background: white;
+
+  img {
+    display: block;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+}
