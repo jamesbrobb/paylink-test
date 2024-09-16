@@ -1,5 +1,6 @@
 
 :host {
+  --large-width: 813px;
   --width: 315px;
   --height: 556px;
   --padding: 75px 40px 60px;
@@ -26,6 +27,7 @@
   container-name: card;
 
   width: 100%;
+  max-width: var(--large-width);
 
   .user-profile-card {
     display: flex;
@@ -66,7 +68,7 @@
 
   @container card (min-width: 813px) {
     .user-profile-card {
-      --width: 813px;
+      --width: var(--large-width);
       --height: 359px;
       --padding: 39px 18px 34px 169px;
       --align-items: flex-start;
