@@ -50,6 +50,7 @@
       display: flex;
       flex-direction: var(--group-direction);
       align-items: var(--group-align-items);
+      width: 100%;
 
       .image {
         margin: var(--image-margin);
@@ -93,12 +94,6 @@
       --btns-justify-content: flex-end;
 
       --pl-user-profile-image-size: 180px;
-
-      --pl-user-info-header-size: 32px;
-      --pl-user-info-copy-size: 16px;
-      --pl-user-info-header-margin: 4px;
-      --pl-user-info-copy-line-height: 20.16px;
-      --pl-user-info-margin-bottom: 4px;
     }
   }
 }

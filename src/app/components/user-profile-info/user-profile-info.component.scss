@@ -1,18 +1,30 @@
 :host {
-  --header-font-size: var(--pl-user-info-header-size, 24px);
-  --header-margin: var(--pl-user-info-header-margin, 7px);
-  --copy-font-size: var(--pl-user-info-copy-size, 12px);
-  --copy-line-height: var(--pl-user-info-copy-line-height, 15.12px);
-  --location-margin-bottom: var(--pl-user-info-margin-bottom, 2px);
   --color: var(--pl-user-info-color, #000000);
 
+  --header-font-size: 24px;
+  --copy-font-size: 12px;
+  --header-margin: 7px;
+  --copy-line-height: 15.12px;
+  --location-margin-bottom: 2px;
+
+  container-type: inline-size;
+  container-name: info;
+
+  display: block;
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   font-family: "Outfit", "Helvetica Neue", sans-serif;
   color: var(--color);
   text-align: center;
+
+  @container info (min-width: 250px) {
+    .info__wrapper {
+      --header-font-size: 32px;
+      --copy-font-size: 16px;
+      --header-margin: 5px;
+      --copy-line-height: 20.16px;
+      --location-margin-bottom: 4px;
+    }
+  }
 
   p {
     font-size: var(--copy-font-size);
