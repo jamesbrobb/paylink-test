@@ -7,7 +7,7 @@ const user = {
   "id": 1,
   "name": "John Doe",
   "socialMediaHandle": "@johndoe",
-  "profileImgSrc": "https://assets.embarknext.com/assets/d37c2ffb-dcc6-4513-8b13-3356b01d02d0",
+  "profileImgSrc": "image.jpg",
   "bio": "I'm a software engineer who loves to code and build things.",
   "location": "Grantham, UK",
   "website": "https://johndoe.com"
