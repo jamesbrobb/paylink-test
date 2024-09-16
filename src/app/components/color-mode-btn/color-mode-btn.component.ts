@@ -18,13 +18,13 @@ import {ColorMode, ColorModeSwitchService} from "../../services/color-mode-switc
 })
 export class ColorModeBtnComponent {
 
-  readonly #darkModeSwitchService = inject(ColorModeSwitchService);
+  readonly #colorModeSwitchService = inject(ColorModeSwitchService);
 
-  readonly darkMode$ = this.#darkModeSwitchService.currentMode$.pipe(
+  readonly darkMode$ = this.#colorModeSwitchService.currentMode$.pipe(
     map(mode => mode === ColorMode.Dark)
   );
 
   toggleDarkMode() {
-    this.#darkModeSwitchService.toggleMode();
+    this.#colorModeSwitchService.toggleMode();
   }
 }

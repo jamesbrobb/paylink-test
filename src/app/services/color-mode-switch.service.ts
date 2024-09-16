@@ -1,17 +1,22 @@
-import {inject, Injectable} from "@angular/core";
+import {inject, Injectable, InjectionToken} from "@angular/core";
 import {DOCUMENT} from "@angular/common";
 import {MediaMatcher} from "@angular/cdk/layout";
 import {BehaviorSubject} from "rxjs";
 
 
-const KEY = 'color-mode';
+export const COLOR_MODE_KEY = 'color-mode';
 
 export const enum ColorMode {
   Dark = 'dark',
   Light = 'light'
 }
 
-const ATTR_NAME = 'data-color-mode';
+export const DEFAULT_COLOR_MODE_ATTR_NAME = 'data-color-mode';
+
+export const COLOR_MODE_ATTR_NAME_TOKEN = new InjectionToken<string>('COLOR_MODE_ATTR_NAME_TOKEN', {
+  providedIn: 'root',
+  factory: () => DEFAULT_COLOR_MODE_ATTR_NAME
+})
 
 
 @Injectable({
@@ -21,20 +26,32 @@ export class ColorModeSwitchService {
 
   readonly #document = inject(DOCUMENT);
   readonly #media = inject(MediaMatcher);
+  readonly #attrName = inject(COLOR_MODE_ATTR_NAME_TOKEN);
+
   readonly #colorSchemeQuery: MediaQueryList;
   readonly #currentMode= new BehaviorSubject<ColorMode>(ColorMode.Light);
 
   readonly currentMode$ = this.#currentMode.asObservable();
 
+  get attrName(): string {
+    return this.#attrName;
+  }
+
+  get currentMode(): ColorMode {
+    return this.#currentMode.value
+  }
 
   constructor() {
     this.#colorSchemeQuery = this.#media.matchMedia('(prefers-color-scheme: dark)');
     this.#colorSchemeQuery.addEventListener('change', (value) => {
+
       if(!!this.#getLocalMode()) {
         return;
       }
+
       this.#setMode(value.matches ? ColorMode.Dark : ColorMode.Light, false);
     });
+
     this.#setInitialMode();
   }
 
@@ -53,6 +70,7 @@ export class ColorModeSwitchService {
   }
 
   #toggleMode() {
+
     this.#setMode(
       this.#isInDarkMode() ? ColorMode.Light : ColorMode.Dark
     );
@@ -75,9 +93,9 @@ export class ColorModeSwitchService {
     }
 
     if (mode === ColorMode.Dark) {
-      this.#document.body.setAttribute(ATTR_NAME,'dark');
+      this.#document.body.setAttribute(this.#attrName,'dark');
     } else {
-      this.#document.body.setAttribute(ATTR_NAME,'light');
+      this.#document.body.setAttribute(this.#attrName,'light');
     }
 
     this.#currentMode.next(mode);
@@ -85,12 +103,12 @@ export class ColorModeSwitchService {
 
   #getLocalMode(): ColorMode | null {
 
-    const mode = localStorage.getItem(KEY);
+    const mode = localStorage.getItem(COLOR_MODE_KEY);
 
     return !mode ? null : mode as ColorMode;
   }
 
   #setLocalMode(value: ColorMode) {
-    localStorage.setItem(KEY, value);
+    localStorage.setItem(COLOR_MODE_KEY, value);
   }
 }

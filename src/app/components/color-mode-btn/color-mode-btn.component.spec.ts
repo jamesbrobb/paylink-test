@@ -5,7 +5,7 @@ import {ColorModeSwitchService} from "../../services/color-mode-switch.service";
 
 
 export class MockColorModeSwitchService {
-
+  toggleMode() {}
 }
 
 
@@ -32,4 +32,6 @@ describe.only('DarkModeBtnComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  //it('should show')
 });
