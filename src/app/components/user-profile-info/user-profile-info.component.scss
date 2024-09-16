@@ -1,7 +1,9 @@
 :host {
   --header-font-size: var(--pl-user-info-header-size, 24px);
+  --header-margin: var(--pl-user-info-header-margin, 7px);
   --copy-font-size: var(--pl-user-info-copy-size, 12px);
   --copy-line-height: var(--pl-user-info-copy-line-height, 15.12px);
+  --location-margin-bottom: var(--pl-user-info-margin-bottom, 2px);
   --color: var(--pl-user-info-color, #000000);
 
   width: 100%;
@@ -29,21 +31,22 @@
   }
 
   .name {
-    margin: 0 0 5px;
+    margin: 0;
+    margin-bottom: var(--header-margin);
     font-size: var(--header-font-size);
   }
 
   .handle {
     font-size: 12px;
     line-height: 15.12px;
-    margin-bottom: 18px;
+    margin-bottom: 19px;
   }
 
   .bio {
-    margin-bottom: 16px;
+    margin-bottom: 19px;
   }
 
   .location {
-    margin-bottom: 2px;
+    margin-bottom: var(--location-margin-bottom);
   }
 }

@@ -5,7 +5,7 @@ import { UserProfileCardComponent } from './user-profile-card.component';
 const data = {
   "name": "John Doe",
   "handle": "@johndoe",
-  "image": "https://assets.embarknext.com/assets/d37c2ffb-dcc6-4513-8b13-3356b01d02d0",
+  "image": "image.jpg",
   "bio": "I'm a software engineer who loves to code and build things.",
   "location": "Grantham, UK",
   "website": "https://johndoe.com"

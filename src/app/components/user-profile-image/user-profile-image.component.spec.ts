@@ -22,7 +22,7 @@ describe('UserProfileImageComponent', () => {
   });
 
   it('should display an image', () => {
-    fixture.componentRef.setInput('src', 'https://assets.embarknext.com/assets/d37c2ffb-dcc6-4513-8b13-3356b01d02d0');
+    fixture.componentRef.setInput('src', 'image.jpg');
     fixture.detectChanges();
 
     const elem = fixture.debugElement.nativeElement;
