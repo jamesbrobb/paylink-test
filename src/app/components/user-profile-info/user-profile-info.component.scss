@@ -1,5 +1,6 @@
 :host {
   --color: var(--pl-user-info-color, #000000);
+  --link-color: var(--pl-user-info-color, #2F5DFF);
 
   --header-font-size: 24px;
   --copy-font-size: 12px;
@@ -39,7 +40,7 @@
     font-weight: 100;
     line-height: 20.16px;
     text-align: center;
-    color: #2F5DFF;
+    color: var(--link-color);
   }
 
   .name {
