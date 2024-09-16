@@ -24,15 +24,8 @@
 
   container-type: inline-size;
   container-name: card;
-  display: flex;
-  flex: 1;
 
-  .card__wrapper {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    max-width: var(--width);
-  }
+  width: 100%;
 
   .user-profile-card {
     display: flex;
@@ -72,7 +65,7 @@
   }
 
   @container card (min-width: 813px) {
-    .card__wrapper {
+    .user-profile-card {
       --width: 813px;
       --height: 359px;
       --padding: 39px 18px 34px 169px;

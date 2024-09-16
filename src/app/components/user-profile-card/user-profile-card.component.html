@@ -1,22 +1,21 @@
-<div class="card__wrapper">
-  <section class="user-profile-card">
-    <div class="group">
 
-      <pl-user-profile-image class="image" [src]="data().image"></pl-user-profile-image>
+<section class="user-profile-card">
+  <div class="group">
 
-      <pl-user-profile-info class="info"
-        [name]="data().name"
-        [handle]="data().handle"
-        [bio]="data().bio"
-        [location]="data().location"
-        [website]="data().website">
-      </pl-user-profile-info>
+    <pl-user-profile-image class="image" [src]="data().image"></pl-user-profile-image>
 
-    </div>
+    <pl-user-profile-info class="info"
+      [name]="data().name"
+      [handle]="data().handle"
+      [bio]="data().bio"
+      [location]="data().location"
+      [website]="data().website">
+    </pl-user-profile-info>
 
-    <div class="btns">
-      <button type="button" class="pl-btn">View CV</button>
-      <button type="button" class="pl-btn">Message</button>
-    </div>
-  </section>
-</div>
+  </div>
+
+  <div class="btns">
+    <button type="button" class="pl-btn">View CV</button>
+    <button type="button" class="pl-btn">Message</button>
+  </div>
+</section>
